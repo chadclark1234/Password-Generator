@@ -11,47 +11,64 @@
 
 // // Add event listener to generate button
 // generateBtn.addEventListener("click", writePassword);
+const lowercaseOption = "abcdefghijklmnopqrstuvwxyz";
+const uppercaseOption = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const numbersOption = "123456789";
+const specialOption = "!#$%&()*+,-./:;<=>?@[]^_{|}~";
+let passwordLengthConfirm;
 let passwordType;
+let randomCharacter;
 
 function generateBtn() {
   // First alert when generate password button clicked
   alert(
-    "Your password will need to be between '8' and '128' characters. You can pick from all uppercase, all lowercase, all numeric or all special characters."
+    "Your password needs to be between '8' and '128' characters. You can pick from all uppercase, all lowercase, all numeric or all special characters."
   );
 
-  // First prompt asking for which type of characters choice
-  passwordType = prompt(
-    "Please type 'U' for uppercase, 'L' for lowercase, 'N' for numeric or 'S' for special characters."
-  ).toUpperCase();
-  console.log(passwordType);
-
   // Second prompt asking for length of password
-  passwordLength = Number(
+  let passwordLengthChoice = Number(
     prompt(
       "Please select the length of your password, from '8' to '128' characters."
     )
   );
-  console.log(passwordLength);
 
-  // Second alert to inform choices from prompts
-  alert(
-    `You have selected "${passwordType}" and "${passwordLength}" for your choices, click "OK" to generate password! `
-  );
-
-  if (passwordType === "U") {
-    prompt("You typed 'U'");
-  } else if (passwordType === "L") {
-    prompt("You typed 'L'");
-  } else if (passwordType === "N") {
-    prompt("You typed 'N'");
-  } else if (passwordType === "S") {
-    prompt("You typed 'S'");
+  // Password length verification
+  if (passwordLengthChoice > 7 && passwordLengthChoice < 129) {
+    getPasswordType();
+    // return passwordLengthChoice;
   } else {
-    prompt("You Suck");
+    generateBtn();
   }
 
-  let lowercaseOption = "abcdefghijklmnopqrstuvwxyz";
-  let uppercaseOption = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  let numbersOption = 123456789;
-  let specialOption = "!#$%&()*+,-./:;<=>?@[]^_{|}~";
+  // Third prompt asking type of password
+  function getPasswordType() {
+    passwordType = prompt(
+      "Please type 'U' for uppercase, 'L' for lowercase, 'N' for numeric or 'S' for special characters."
+    ).toUpperCase();
+
+    if (passwordType === "U") {
+      passwordType = uppercaseOption;
+    } else if (passwordType === "L") {
+      passwordType = lowercaseOption;
+    } else if (passwordType === "N") {
+      passwordType = numbersOption;
+    } else if (passwordType === "S") {
+      passwordType = specialOption;
+    } else {
+      getPasswordType();
+    }
+    // Generator
+    for (i = 0; i < passwordLengthChoice; i++) {
+      randomCharacter = passwordType.charAt(
+        Math.floor(Math.random() * passwordType.length)
+      );
+      console.log(randomCharacter);
+      document.getElementById("password").textContent = randomCharacter;
+    }
+  }
+
+  // Second alert to inform choices from prompts
+  // alert(
+  //   `You have selected "${passwordType}" and "${passwordLength}" for your choices, click "OK" to generate password! `
+  // );
 }
