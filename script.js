@@ -1,16 +1,7 @@
 // Assignment Code
-// var generateBtn = document.querySelector("#generate");
 
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
+// const lowercaseArray = "abcdefghijklmnopqrstuvwxyz".split("");
 
-//   passwordText.value = password;
-// }
-
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
 const lowercaseOption = "abcdefghijklmnopqrstuvwxyz";
 const uppercaseOption = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numbersOption = "0123456789";
@@ -19,6 +10,7 @@ const allOption =
   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&()*+,-./:;<=>?@[]^_{|}~";
 let passwordType;
 let randomCharacter;
+let passwordConfirm;
 
 function generateBtn() {
   // First alert when generate password button clicked
@@ -45,36 +37,36 @@ function generateBtn() {
   function getPasswordType() {
     passwordType = prompt(
       "Please type 'U' for uppercase, 'L' for lowercase, 'N' for numeric, 'S' for special characters or 'A' for all."
-    ).toUpperCase();
-
+    );
+    if (passwordType) {
+      passwordType = passwordType.toUpperCase();
+    } else {
+      return;
+    }
     if (passwordType === "U") {
-      passwordType = uppercaseOption;
+      passwordConfirm = uppercaseOption;
     } else if (passwordType === "L") {
-      passwordType = lowercaseOption;
+      passwordConfirm = lowercaseOption;
     } else if (passwordType === "N") {
-      passwordType = numbersOption;
+      passwordConfirm = numbersOption;
     } else if (passwordType === "S") {
-      passwordType = specialOption;
+      passwordConfirm = specialOption;
     } else if (passwordType === "A") {
-      passwordType = allOption;
+      passwordConfirm = allOption;
     } else {
       getPasswordType();
     }
   }
 
   // Generator
+  let str = "";
   for (let i = 0; i < passwordLengthChoice; i++) {
-    randomCharacter = passwordType.charAt(
-      Math.floor(Math.random() * passwordType.length)
+    randomCharacter = passwordConfirm.charAt(
+      Math.floor(Math.random() * passwordConfirm.length)
     );
     console.log(randomCharacter);
-  }
-  // String concatenation
-  let str = "";
-  for (i = 0; i < passwordLengthChoice; i++) {
     str += randomCharacter;
-    console.log(str);
   }
-
+  console.log(str);
   document.getElementById("password").textContent = str;
 }
