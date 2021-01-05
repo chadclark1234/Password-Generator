@@ -5,7 +5,7 @@ The password generator webpage will create a random password with your choice of
 ##Challenges
 For this project, the user interface was provided and my challenge was to provide the interactive JavaScript to make the generator perform. The most challenging part for me was turning the random characters back into a string so they could be displayed in the text box. :triumph:
 
-![alt text](./pswpic.png "Generator")
+![alt text](pswpic.png "Generator")
 
 ##Credits
 Special thank you to my instructor, TA and tutor for the skills I have learned to complete this project. :student:
