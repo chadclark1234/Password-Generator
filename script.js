@@ -1,7 +1,3 @@
-// Assignment Code
-
-// const lowercaseArray = "abcdefghijklmnopqrstuvwxyz".split("");
-
 const lowercaseOption = "abcdefghijklmnopqrstuvwxyz";
 const uppercaseOption = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numbersOption = "0123456789";
@@ -28,7 +24,6 @@ function generateBtn() {
   // Password length verification
   if (passwordLengthChoice > 7 && passwordLengthChoice < 129) {
     getPasswordType();
-    // return passwordLengthChoice;
   } else {
     generateBtn();
   }
@@ -40,8 +35,6 @@ function generateBtn() {
     );
     if (passwordType) {
       passwordType = passwordType.toUpperCase();
-    } else {
-      return;
     }
     if (passwordType === "U") {
       passwordConfirm = uppercaseOption;
@@ -58,15 +51,15 @@ function generateBtn() {
     }
   }
 
-  // Generator
+  // Generator and concatenation
   let str = "";
   for (let i = 0; i < passwordLengthChoice; i++) {
     randomCharacter = passwordConfirm.charAt(
       Math.floor(Math.random() * passwordConfirm.length)
     );
-    console.log(randomCharacter);
     str += randomCharacter;
   }
-  console.log(str);
+
+  // Display to the UI
   document.getElementById("password").textContent = str;
 }
