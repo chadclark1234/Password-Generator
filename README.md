@@ -8,6 +8,9 @@ For this project, the user interface was provided and my challenge was to provid
 
 ## Project links
 
+https://github.com/chadclark1234/Password-Generator
+https://chadclark1234.github.io/Password-Generator/
+
 ![alt text](./Images/pswpic.PNG "Generator")
 
 ## Credits
